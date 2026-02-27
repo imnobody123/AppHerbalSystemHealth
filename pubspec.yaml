@@ -1,0 +1,34 @@
+name: app_registro_rendimientos
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  # Movido aquí para evitar el error de duplicado
+  flutter_launcher_icons: ^0.13.1 
+
+flutter:
+  uses-material-design: true
+
+  # Se habilitó la sección de assets para que reconozca tu logo
+  assets:
+    - assets/icons/logo.png
+
+# Esta configuración va al final, sin sangría a la izquierda
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/logo.png"
