@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   http: ^1.2.0
   cupertino_icons: ^1.0.8
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:
@@ -23,9 +24,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  fonts:
+    - family: CenturyGothic
+      fonts:
+        - asset: assets/fonts/CenturyGothic.ttf
+        - asset: assets/fonts/CenturyGothicBold.ttf
+          weight: 700
+          
   # Se habilitó la sección de assets para que reconozca tu logo
   assets:
     - assets/icons/logo.png
+    - assets/images/
 
 # Esta configuración va al final, sin sangría a la izquierda
 flutter_launcher_icons:

@@ -323,7 +323,6 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
 
       _limpiarFormulario();
     } else {
-      // Si el backend devuelve un BadRequest con texto, lo mostramos
       _mostrarError('Error: ${response.body}');
     }
   } catch (e) {
@@ -333,51 +332,55 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
   }
 }
 
-  Future<bool?> _mostrarConfirmacion(String mensaje) 
-  {
-    return showDialog<bool>
-    (
+  // ... (Tus métodos de _mostrarConfirmacion, _mostrarError y _mostrarExito se quedan exactamente igual)
+  Future<bool?> _mostrarConfirmacion(String mensaje) {
+    return showDialog<bool>(
       context: context,
       barrierDismissible: false,
-      builder: (context) 
-      {
-        return AlertDialog
-        (
-          title: Row
-          (
-            children: 
-            [
-              Icon
-              (
-                Icons.help,
-                color: Colors.blue,
-                size: 30,
-              ),
+      builder: (context) {
+        return AlertDialog(
+          title: Row(
+            children: const [
+              Icon(Icons.help, color: Colors.blue, size: 30),
               SizedBox(width: 8),
-              Text('Confirmación')
+              Text(
+                'Confirmación',
+                style: TextStyle(
+                  fontFamily: "CenturyGothic"
+                ),
+              )
             ]
           ),
-          content: Text(mensaje),
-          shape: RoundedRectangleBorder
-          (
-            borderRadius: BorderRadius.circular(12),
-          ),
-          actions: 
-          [
-            TextButton
-            (
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('Cancelar'),
+          content: Text(
+            mensaje,
+            style: TextStyle(
+              fontFamily: "CenturyGothic"
             ),
-            ElevatedButton
-            (
-              style: ElevatedButton.styleFrom
-              (
-                backgroundColor: const Color(0xFF66BB6A),
+          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text(
+                'Cancelar',
+                style: TextStyle(
+                  fontFamily: "CenturyGothic"
+                ),
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 0, 80, 40),
                 foregroundColor: Colors.white 
               ),
               onPressed: () => Navigator.of(context).pop(true),
-              child: const Text('Confirmar'),
+              child: const Text(
+                'Confirmar',
+                style: TextStyle(
+                  fontFamily: "CenturyGothic",
+                  fontWeight: FontWeight.bold
+                ),
+              ),
             ),
           ],
         );
@@ -385,36 +388,38 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
     );
   }
 
-  void _mostrarError(String mensaje) 
-  {
-    showDialog
-    (
+  void _mostrarError(String mensaje) {
+    showDialog(
       context: context,
-      builder: (context) 
-      {
-        return AlertDialog
-        (
+      builder: (context) {
+        return AlertDialog(
           title: Row(
-            children: const 
-            [
-              Icon
-              (
-                Icons.error, 
-                color: Colors.red,
-                size: 30,
-              ),
+            children: const [
+              Icon(Icons.error, color: Colors.red, size: 30),
               SizedBox(width: 8),
-              
-              Text('Error'),
+              Text(
+                'Error',
+                style: TextStyle(
+                  fontFamily: "CenturyGothic"
+                ),
+              ),
             ],
           ),
-          content: Text(mensaje),
-          actions: 
-          [
-            TextButton
-            (
+          content: Text(
+            mensaje,
+            style: TextStyle(
+              fontFamily: "CenturyGothic"
+            ),
+          ),
+          actions: [
+            TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cerrar'),
+              child: const Text(
+                'Cerrar',
+                style: TextStyle(
+                  fontFamily: "CenturyGothic"
+                ),
+              ),
             ),
           ],
         );
@@ -422,53 +427,44 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
     );
   }
 
-  void _mostrarExito(String mensaje) 
-  {
-    showDialog
-    (
+  void _mostrarExito(String mensaje) {
+    showDialog(
       context: context,
-      builder: (context) 
-      {
-        return Dialog
-        (
-          shape: RoundedRectangleBorder
-          (
-            borderRadius: BorderRadius.circular(16),
-          ),
+      builder: (context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           child: Padding(
             padding: const EdgeInsets.all(20),
-            child: Column
-            (
+            child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: 
-              [
-                const Icon
-                (
-                  Icons.check_circle,
-                  color: Colors.green,
-                  size: 64,
-                ),
+              children: [
+                const Icon(Icons.check_circle, color: Colors.green, size: 64),
                 const SizedBox(height: 16),
-                const Text
-                (
-                  '¡Operación exitosa!',
-                  style: TextStyle
-                  (
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                const Text(
+                  '¡Operación exitosa!', 
+                  style: TextStyle(
+                    fontFamily: "CenturyGothic",
+                    fontSize: 18, 
+                    fontWeight: FontWeight.bold
+                    )
                   ),
-                ),
                 const SizedBox(height: 12),
-                Text
-                (
+                Text(
                   mensaje,
-                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: "CenturyGothic"
+                  ),
+                  textAlign: TextAlign.center
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton
-                (
+                ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Aceptar'),
+                  child: const Text(
+                    'Aceptar',
+                    style: TextStyle(
+                      fontFamily: "CenturyGothic"
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -571,8 +567,13 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
         (
           backgroundColor: const Color(0xFFF2F2F2),
           appBar: AppBar(
-            title: const Text('Procesos'),
-            backgroundColor: const Color(0xFF66BB6A),
+            title: const Text(
+                'Procesos',
+                style: TextStyle(
+                  fontFamily: "CenturyGothic"
+                ),
+              ),
+            backgroundColor: const Color.fromARGB(255, 0, 80, 40),
             foregroundColor: Colors.white,
 
             bottom: const TabBar(
@@ -591,13 +592,18 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
               cargando
                 ? const Center(
                   child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(
-                            color: Color(0xFF66BB6A), // Color verde como tu AppBar
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularProgressIndicator(
+                            color: Color.fromARGB(255, 0, 80, 40), // Color verde como tu AppBar
                           ),
                           SizedBox(height: 16),
-                          Text('Cargando datos...'),
+                          Text(
+                            'Cargando datos...',
+                            style: TextStyle(
+                              fontFamily: "CenturyGothic"
+                            ),  
+                          ),
                         ],
                       ),
                     )
@@ -625,9 +631,10 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
                           (
                             'Registro de nuevo proceso de molinos',
                             style: TextStyle(
+                              fontFamily: "CenturyGothic",
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF2E7D32),
+                              color: Color.fromARGB(255, 0, 80, 40),
                             ),
                           ),
                         ),
@@ -637,6 +644,9 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
                         value: controlSeleccionado,
                         decoration: InputDecoration(
                           labelText: 'Control',
+                          labelStyle: TextStyle(
+                            fontFamily: "CenturyGothic"
+                          ),
                           // Cambiamos el color de fondo para que el usuario vea que está bloqueado
                           filled: true,
                           fillColor: widget.idProcesoMolino != null ? Colors.grey[200] : Colors.white,
@@ -645,7 +655,12 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
                         items: controles.map((control) {
                           return DropdownMenuItem<ControlEntradaMolino>(
                             value: control,
-                            child: Text(control.controlMP),
+                            child: Text(
+                              control.controlMP,
+                              style: TextStyle(
+                                fontFamily: "CenturyGothic"
+                              ),
+                              ),
                           );
                         }).toList(),
 
@@ -666,6 +681,7 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
                         'Salidas del Proceso',
                         style: TextStyle
                         (
+                          fontFamily: "CenturyGothic",
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -681,11 +697,17 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
                         TextFormField
                         (
                           controller: observacionesController,
+                          style: TextStyle(
+                            fontFamily: "CenturyGothic"
+                          ),
                           maxLines: 4, // 🔥 multilínea
                           keyboardType: TextInputType.multiline,
                           decoration: InputDecoration
                           (
                             labelText: 'Observaciones',
+                            labelStyle: TextStyle(
+                              fontFamily: "CenturyGothic"
+                            ),
                             hintText: 'Escribe aquí cualquier comentario adicional...',
                             alignLabelWithHint: true, // 👈 importante en multiline
                             border: OutlineInputBorder
@@ -706,11 +728,16 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
                           child: ElevatedButton.icon
                           (
                             icon: const Icon(Icons.save),
-                            label: const Text('Registrar'),
+                            label: const Text(
+                              'Registrar',
+                              style: TextStyle(
+                                fontFamily: "CenturyGothic"
+                              ),
+                            ),
                           
                             style: ElevatedButton.styleFrom
                             (
-                              backgroundColor: const Color(0xFF66BB6A),
+                              backgroundColor: Color.fromARGB(255, 0, 80, 40),
                               foregroundColor: const Color(0XFFF4F4F4),
                               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                             ),
@@ -765,9 +792,11 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
               value: s.activo,
               title: Text(
                 s.nombre,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontFamily: "CenturyGothic",
+                  fontWeight: FontWeight.bold
+                ),
               ),
-              // Busca esto dentro de _seccionProceso -> CheckboxListTile -> onChanged
               onChanged: (value) {
                 setState(() {
                   s.activo = value!;
@@ -807,8 +836,15 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
 
               DropdownButtonFormField<EquipoTrabajo>(
                 value: s.equipoSeleccionado,
+                style: TextStyle(
+                  fontFamily: "CenturyGothic",
+                  color: Colors.black
+                ),
                 decoration: InputDecoration(
                   labelText: 'Equipo',
+                  labelStyle: TextStyle(
+                    fontFamily: "CenturyGothic"
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -883,7 +919,12 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
               return CheckboxListTile(
                 controlAffinity: ListTileControlAffinity.leading,
                 dense: true,
-                title: Text(op.nombre),
+                title: Text(
+                  op.nombre,
+                  style: TextStyle(
+                    fontFamily: "CenturyGothic"
+                  ),
+                ),
                 value: s.operadoresIds.contains(op.idOperador),
                 onChanged: (value) {
                   setState(() {
@@ -909,6 +950,9 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
       decoration: InputDecoration
       (
         labelText: label,
+        labelStyle: TextStyle(
+          fontFamily: "CenturyGothic"
+        ),
         prefixIcon: const Icon(Icons.calendar_today, size: 19),
       ),
       controller: TextEditingController(
@@ -932,6 +976,9 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
       decoration: InputDecoration
       (
         labelText: label,
+        labelStyle: TextStyle(
+          fontFamily: "CenturyGothic"
+        ),
         prefixIcon: const Icon(Icons.access_time, size: 19)
       ),
       controller: TextEditingController(
@@ -956,6 +1003,9 @@ class _RendimientosMolinos extends State<RendimientosMolinos>
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
+        labelStyle: TextStyle(
+          fontFamily: "CenturyGothic"
+        ),
         prefixIcon: const Icon(Icons.scale, size: 19),
       ),
       keyboardType: const TextInputType.numberWithOptions(decimal: true),

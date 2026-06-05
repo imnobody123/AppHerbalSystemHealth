@@ -4,6 +4,7 @@ class ControlEntradaMolino {
   final int id;
   int? idProcesoMolino;
   String controlMP;
+  String? pais;
   final double KG;
 
   TextEditingController controlMPCtrl;
@@ -12,6 +13,7 @@ class ControlEntradaMolino {
     required this.id,
     this.idProcesoMolino,
     required this.controlMP,
+    this.pais,
     required this.KG
   }) : controlMPCtrl = TextEditingController();
 
@@ -20,8 +22,8 @@ class ControlEntradaMolino {
       id: json['idEntradaMolinoDetalle'],
       idProcesoMolino: json['idProcesoMolino'],
       controlMP: json['controlMP'],
+      pais: json['pais'],
       KG: json['kg'] ?? json['cantidadEntrada'] ?? 0
     );
   }
 }
-
